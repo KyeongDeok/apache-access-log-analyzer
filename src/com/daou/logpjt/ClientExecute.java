@@ -39,6 +39,7 @@ public class ClientExecute {
 				num = sc.nextInt();
 				Sel s = Sel.getByValue(num);
 				
+				//TODO:: 리플렉션 제거해야함.
     			switch(s) {
     			case LONG_TIME_REQ_API:
     				controllerExecute  = new ControllerExecute(new LongTimeReqController());
