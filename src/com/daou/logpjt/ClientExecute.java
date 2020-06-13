@@ -1,20 +1,18 @@
 package com.daou.logpjt;
 
 import java.util.Scanner;
-import com.daou.logpjt.view.LogReqWithResCodeView;
-import com.daou.logpjt.view.LongTimeReqView;
-import com.daou.logpjt.controller.AbstractController;
+
 import com.daou.logpjt.controller.BrowserFromReqController;
+import com.daou.logpjt.controller.ControllerExecute;
+import com.daou.logpjt.controller.ControllerThreadPool;
 import com.daou.logpjt.controller.LogReqCountController;
 import com.daou.logpjt.controller.LogResCodeDistController;
+import com.daou.logpjt.controller.LongTimeReqController;
 import com.daou.logpjt.view.AbstractView;
 import com.daou.logpjt.view.HomeView;
+import com.daou.logpjt.view.LongTimeReqView;
 
-/*
- * ∏Ì∑…æÓ Ω««‡ ≈¨∑°Ω∫ ¿‘¥œ¥Ÿ.
- */
-
-public class Execute {
+public class ClientExecute {
 	public enum Sel {
 		LONG_TIME_REQ_API,
 		LOG_REQAPI_WITH_RESCODE_VIEW,
@@ -27,42 +25,41 @@ public class Execute {
             return values()[value-1];
         }
 	}
+	
 	public static void execute() {
 		boolean flag = true;
-		Scanner sc = new Scanner(System.in);
 		int num;
+		Scanner sc = new Scanner(System.in);
+		ControllerExecute controllerExecute = null;
+		ControllerThreadPool threadPool = new ControllerThreadPool();
 		
 		while(flag) {
     		HomeView.getInstance().render();
     		AbstractView v;
-    		AbstractController c;
 				num = sc.nextInt();
 				Sel s = Sel.getByValue(num);
 				
     			switch(s) {
     			case LONG_TIME_REQ_API:
+    				controllerExecute  = new ControllerExecute(new LongTimeReqController());
     				v = new LongTimeReqView();
     				v.render();
     				break;
     				
     			case LOG_REQAPI_WITH_RESCODE_VIEW:
-    				v = new LogReqWithResCodeView();
-    				v.render();
+    				controllerExecute  = new ControllerExecute(new LongTimeReqController());
     				break;
     				
     			case LOG_REQ_COUNT:
-    				c = new LogReqCountController();
-    				c.run();
+    				controllerExecute  = new ControllerExecute(new LogReqCountController());
     				break;
     				
     			case LOG_RES_CODE_DIST:
-    				c = new LogResCodeDistController();
-    				c.run();
+    				controllerExecute  = new ControllerExecute(new LogResCodeDistController());
     				break;
     				
     			case BROWSER_FROM_REQ:
-    				c = new BrowserFromReqController();
-    				c.run();
+    				controllerExecute  = new ControllerExecute(new BrowserFromReqController());
     				break;
     				
     			case EXIT:
@@ -74,9 +71,11 @@ public class Execute {
     				break;
     			}
     			
-        	if(!flag) {System.out.println("«¡∑Œ±◊∑•¿ª ¡æ∑·«’¥œ¥Ÿ.");}
+        	if(!flag) {System.out.println("ÏãúÏä§ÌÖúÏùÑ Ï¢ÖÎ£åÌï©ÎãàÎã§.");}
+        	
         }    	
 		
 		sc.close();
+		threadPool.assignThreadtoController(controllerExecute);
 	}
 }

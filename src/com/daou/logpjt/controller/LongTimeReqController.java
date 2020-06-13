@@ -1,21 +1,17 @@
 package com.daou.logpjt.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
 
-import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
 
-/*
- * log를 처리 하는 클래스
- */
+
 public class LongTimeReqController extends AbstractController {
 	private static HashSet<String> reqApiHs = new HashSet<>();
-
-	public LongTimeReqController(LogDataModel model) {
-		super(model);
-	}
 
 	public LogDataModelAndView show() {
 		LogDataModelAndView mv = new LogDataModelAndView();
@@ -24,7 +20,7 @@ public class LongTimeReqController extends AbstractController {
 		return mv;
 	}
 
-	public synchronized void process(String log) {
+	public  void process(String log) {
 		String logTime = parse.doParse(RegularExp.LOGTIME, log);
 		if (logTime == null || logTime.equals(""))
 			return;
@@ -46,5 +42,24 @@ public class LongTimeReqController extends AbstractController {
 		if (reqApi == null)
 			return;
 		reqApiHs.add(reqApi);
+	}
+	
+	public void run() {
+			
+			BufferedReader br;
+			String log;
+			
+			try {
+				br = new BufferedReader(new FileReader(filePath));
+				
+				while((log = br.readLine()) != null) {
+					process(log);
+				}
+				
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 	}
 }

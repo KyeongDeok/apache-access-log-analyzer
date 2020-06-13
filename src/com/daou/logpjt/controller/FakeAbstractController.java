@@ -1,5 +1,8 @@
 package com.daou.logpjt.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,22 +12,39 @@ import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogParseUtil;
 
-public abstract class AbstractController {
-	
-	protected String filePath;
-	protected LogDataModel model = new LogDataModel();
+public abstract class FakeAbstractController {
 	protected LogParseUtil parse = LogParseUtil.getInstance();
+	protected LogDataModel model;
+
+	abstract void process(String log);
+
 	protected LogDataModelAndView show() {
 		return null;
 	}
+
+	public FakeAbstractController(LogDataModel model) {
+		this.model = model;
+	}
+
+	public FakeAbstractController() {}
 	
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void run(String filePath) {
+		
+		BufferedReader br;
+		String log;
+		
+		try {
+			br = new BufferedReader(new FileReader("filepath"));
+			
+			while((log = br.readLine()) != null) {
+				process(log);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-	public abstract void run();
-	
-	//FIXME:: 리팩토링 필요.
 	public void render() {
 		LogDataModelAndView mv = show();
 		if (mv == null) {

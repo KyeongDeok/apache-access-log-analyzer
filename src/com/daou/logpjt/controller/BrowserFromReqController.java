@@ -1,18 +1,17 @@
 package com.daou.logpjt.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
 
 public class BrowserFromReqController extends AbstractController {
 	private ConcurrentHashMap <Integer, HashSet<String>> browserHm = new ConcurrentHashMap<>();
-	public BrowserFromReqController(LogDataModel model) {
-		super(model);
-	}
 	
 	public BrowserFromReqController() {};
 	
@@ -38,5 +37,22 @@ public class BrowserFromReqController extends AbstractController {
 				s.add(device);
 				browserHm.put(timeKey,s);
 			}
+	}
+
+	@Override
+	public void run() {
+		String log;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(filePath));
+			
+			while((log = br.readLine()) != null) {
+				process(log);
+			}
+			
+			br.close();
+		} catch ( IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

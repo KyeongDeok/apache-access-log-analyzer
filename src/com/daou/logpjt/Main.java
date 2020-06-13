@@ -1,11 +1,11 @@
 package com.daou.logpjt;
 
 /*
- * ¸ÞÀÎ Å¬·¡½º
+ * ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
  */
 public class Main {
 	public static void main(String [] args){
-		//TODO ½Ã°£ÀÌ ¿À·¡°É¸² Æ©´× ÇÊ¿äÇÔ...
-		Execute.execute();
+		//TODO ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É¸ï¿½ Æ©ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½...
+		ClientExecute.execute();
 	}
 }

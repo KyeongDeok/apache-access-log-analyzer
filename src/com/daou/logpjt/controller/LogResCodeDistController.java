@@ -1,16 +1,15 @@
 package com.daou.logpjt.controller;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
 
 public class LogResCodeDistController extends AbstractController {
-	protected LogResCodeDistController(LogDataModel model) {
-		super(model);
-	}
 
 	public LogResCodeDistController() {
 	}
@@ -43,4 +42,23 @@ public class LogResCodeDistController extends AbstractController {
 			}
 		}
 	}
+	
+	public void run() {
+		
+		BufferedReader br;
+		String log;
+		
+		try {
+			br = new BufferedReader(new FileReader(filePath));
+			
+			while((log = br.readLine()) != null) {
+				process(log);
+			}
+			
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+}
 }
