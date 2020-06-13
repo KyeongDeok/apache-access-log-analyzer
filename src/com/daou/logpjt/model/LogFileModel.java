@@ -21,9 +21,8 @@ public class LogFileModel {
 		return brlist;
 	}
 
-	// 하위 로컬 파일 목록 모두 읽기
 	public static List<Path> getFilePaths() throws IOException {
-		List<Path> paths = Files.walk(Paths.get("C:\\Users\\user\\Desktop\\test")).filter(Files::isDirectory)
+		List<Path> paths = Files.walk(Paths.get("C:\\Users\\kdpark\\Desktop\\testLog")).filter(Files::isDirectory)
 				.flatMap(e -> {
 					try {
 						return Files.walk(e);

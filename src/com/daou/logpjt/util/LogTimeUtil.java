@@ -7,6 +7,7 @@ import java.util.Locale;
 
 public class LogTimeUtil {
 	private final static Locale locale = Locale.ENGLISH;
+	
 	public static long getUnixTime(String time) {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss",locale);
         try {
@@ -17,6 +18,7 @@ public class LogTimeUtil {
 		}
         return -1;
 	}
+	
 	public static int getHourOfDay(String log) {
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss",locale);
@@ -29,6 +31,7 @@ public class LogTimeUtil {
 		}
         return -1;
 	}
+	
 	public static long getEpoch(String log) {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MMM/yyyy:HH:mm:ss",locale);
         try {
