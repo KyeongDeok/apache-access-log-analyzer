@@ -2,21 +2,17 @@ package com.daou.logpjt.view;
 
 import com.daou.logpjt.model.LogDataModel;
 
-/*
- * view¸¦ ´ã´çÇÏ´Â Å¬·¡½º
- * command Å¬·¡½ºÀÇ ¸®ÅÏ °ªÀ» ¹Ş¾Æ ½ÇÇàµÈ´Ù.
- * view ¸Ş¼Òµå ³×ÀÓ ¹Ù²ã¾ß ÇÔ
- */
+
 public class HomeView extends AbstractView {
     public LogDataModel show () {
 		System.out.println("");
-		System.out.println("¿øÇÏ´Â Á¶°ÇÀ» ¼±ÅÃÇÏ¼¼¿ä. (1-6)");
-		System.out.println("Á¶°Ç 1. Æ¯Á¤ ½Ã°£´ëÀÇ ÀÀ´ä½Ã°£ÀÌ ¿À·¡ °É¸° Request API ÃßÃâ (¿À·¡ °É¸°´Ù´Â ±âÁØÀº ¹Ù²ğ ¼ö ÀÖ¾î¾ß ÇÔ. ¿¹)1ÃÊÀÌ»ó, 2ÃÊÀÌ»ó ....)");
-		System.out.println("Á¶°Ç 2. Æ¯Á¤ ½Ã°£´ëÀÇ HTTP ÀÀ´äÄÚµå(200, 500, 304 µî)¿Í METHOD(POST, GET, PUT, DELETE) Á¶°ÇÀ¸·Î Á¤Àû ¸®¼Ò½º(js, image, css)°¡ ¾Æ´Ñ Request API °Ë»ö (Á¤·ÄÀº È£ÃâµÈ API °Ç¼ö¿¡ µû¶ó ³»¸²Â÷¼øÀ¸·Î Á¤·Ä)");
-		System.out.println("Á¶°Ç 3. ½Ã°£´ëº° ¿äÃ» È½¼ö Ä«¿îÆ®");
-		System.out.println("Á¶°Ç 4. ½Ã°£´ëº° HTTP ÀÀ´äÄÚµå ºĞÆ÷ (1½Ã°£ ´ÜÀ§)");
-		System.out.println("Á¶°Ç 5. ½Ã°£´ëº° Request Á¤º¸¿¡¼­ Client-Agent Á¤º¸¸¦ ÃßÃâÇÏ¿© ¾î¶² ºê¶ó¿ìÀú(µğ¹ÙÀÌ½º)¿¡¼­ Á¢¼Ó Çß´ÂÁö ÃßÃâ");
-		System.out.println("Á¶°Ç 6. Á¾·á...");
+		System.out.println("ì¡°ê±´ì„ ì„ íƒí•´ì£¼ì„¸ìš”. (1-6)");
+		System.out.println("ì¡°ê±´ 1. íŠ¹ì • ì‹œê°„ë™ì•ˆì— íŠ¹ì •ì‹œê°„ ì´ìƒ ê±¸ë¦° Request API ì¶”ì¶œ (1ì´ˆì´ìƒ, 2ì´ˆ ì´ìƒ ...)");
+		System.out.println("ì¡°ê±´ 2. HTTP response(200, 500, 304 ë“±) METHOD(POST, GET, PUT, DELETE) ë¥¼ ê°€ì§€ê³  ì •ì  ë¦¬ì†ŒìŠ¤ê°€ ì•„ë‹Œ(js, image, css) Request API ì¶”ì¶œ(ê°€ì¥ ë§ì´ í˜¸ì¶œëœ ìˆœì„œë¡œ ë‚´ë¦¼ì°¨ìˆœ)");
+		System.out.println("ì¡°ê±´ 3. request API ì¹´ìš´íŠ¸");
+		System.out.println("ì¡°ê±´ 4. HTTP response code ë¶„í¬ ì¶”ì¶œ");
+		System.out.println("ì¡°ê±´ 5. HTTP requset logì—ì„œë¶€í„° Client Device ì¶”ì¶œ");
+		System.out.println("ì¡°ê±´ 6. í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤...");
 		return null;
     }
 	public static class InnerHomeView {

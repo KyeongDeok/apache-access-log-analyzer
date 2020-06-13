@@ -10,11 +10,11 @@ public class LogReqWithResCodeView extends AbstractView {
 		Scanner sc = new Scanner(System.in);
 		LogDataModel model = new LogDataModel("LogReqWithResCodeController/run");
 		
-		System.out.println("½ÃÀÛ ½Ã°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä: (ex 18/May/2020:00:01:29)");
+		System.out.println("ì‹œì‘ ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”. : (ex 18/May/2020:00:01:29)");
 		String start = sc.next();
 		model.addAttribute("startTime",LogTimeUtil.getUnixTime(start));
 		
-		System.out.println("³¡³ª´Â ½Ã°£À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä: (ex 18/May/2020:11:11:30)");
+		System.out.println("ëë‚˜ëŠ” ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.  : (ex 18/May/2020:11:11:30)");
 		String end = sc.next();
 		model.addAttribute("endTime",LogTimeUtil.getUnixTime(end));
 		
@@ -26,7 +26,7 @@ public class LogReqWithResCodeView extends AbstractView {
 		String code = sc.next();
 		model.addAttribute("code",code);
 		
-		System.out.println(start+" - "+end+" ½Ã°£ »çÀÌ "+method+" method¸¦ ¾²¸é¼­ ÀÀ´äÄÚµå°¡ "+code+"ÀÎ request API: ");
+		System.out.println(start+" - "+end+"ì‚¬ì´ì˜ "+method+" method ì´ê³ , ì‘ë‹µì½”ë“œê°€"+code+"ì¸ request API: ");
 		return model;
 	}
 }

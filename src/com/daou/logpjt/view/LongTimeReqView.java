@@ -9,16 +9,16 @@ public class LongTimeReqView extends AbstractView {
 	public LogDataModel show() {
 		Scanner s = new Scanner(System.in);
 		LogDataModel model = new LogDataModel("LongTimeReqController/run");
-		System.out.println("½ÃÀÛ ½Ã°£À» ÀÔ·ÂÇØÁÖ¼¼¿ä: (ex 18/May/2020:00:01:29)");
+		System.out.println("ì‹œì‘ ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”. : (ex 18/May/2020:00:01:29)");
 		String start = s.next();
 		model.addAttribute("startTime", LogTimeUtil.getUnixTime(start));
-		System.out.println("³¡³ª´Â ½Ã°£À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä: (ex 18/May/2020:11:11:30)");
+		System.out.println("ëë‚˜ëŠ” ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.  : (ex 18/May/2020:11:11:30)");
 		String end = s.next();
 		model.addAttribute("endTime", LogTimeUtil.getUnixTime(end));
-		System.out.println("xÃÊ ÀÌ»ó: (ex 1,2,3...)");
+		System.out.println("ì‘ë‹µì— ê±¸ë¦° ì‹œê°„ì„ ì…ë ¥í•´ì£¼ì„¸ìš” : (ex 1,2,3...)");
 		double resTime = s.nextDouble();
 		model.addAttribute("resTime",resTime);
-		System.out.println(start+" - "+end+" ½Ã°£ »çÀÌ "+resTime+"ÃÊ ÀÌ»ó °É¸° request API: ");
+		System.out.println(start+" - "+end+" ì‚¬ì´ì˜  "+resTime+"ì´ìƒ ê±¸ë¦° request API: ");
 		return model;
 	}
 }
