@@ -2,7 +2,7 @@ package com.daou.logpjt.util;
 
 
 public enum RegularExp {
-	LOGTIME("\\S"),
+	LOGTIME("(?<LOGTIME>\\S)"),
 	METHOD("\\S"),
 	RESCODE("\\S"),
 	DELAY("\\S"),

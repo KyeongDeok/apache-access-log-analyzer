@@ -12,7 +12,6 @@ import com.daou.logpjt.util.LogParseUtil;
 public abstract class AbstractController {
 	
 	protected String filePath;
-	protected LogDataModel model = new LogDataModel();
 	protected LogParseUtil parse = LogParseUtil.getInstance();
 	protected LogDataModelAndView show() {
 		return null;

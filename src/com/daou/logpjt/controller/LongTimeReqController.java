@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 
+import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
@@ -24,13 +25,13 @@ public class LongTimeReqController extends AbstractController {
 		String logTime = parse.doParse(RegularExp.LOGTIME, log);
 		if (logTime == null || logTime.equals(""))
 			return;
-		long startTime = (long) model.getAttribute("startTime");
-		long endTime = (long) model.getAttribute("endTime");
+		long startTime = (long) LogDataModel.getAttribute("startTime");
+		long endTime = (long) LogDataModel.getAttribute("endTime");
 		long epoch = LogTimeUtil.getEpoch(logTime);
 
 		if (startTime > epoch || epoch > endTime)
 			return;
-		double resTime = (double) model.getAttribute("resTime");
+		double resTime = (double) LogDataModel.getAttribute("resTime");
 		String resDelay = parse.doParse(RegularExp.DELAY, log);
 		if (resDelay == null)
 			return;
@@ -55,11 +56,10 @@ public class LongTimeReqController extends AbstractController {
 				while((log = br.readLine()) != null) {
 					process(log);
 				}
-				
+				//123.123.123.123 - - [12/Apr/2018:17:03:50 +0900] "GET /api/aaaa HTTP/1.1" 200 34 1468 "https://m.naver.com" "Mozilla/5.0 (iPhone; CPU iPhone OS 11_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E216 NAVER(inapp; search; 580; 8.6.3; 7)"  
 				br.close();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 			
-	}
 }

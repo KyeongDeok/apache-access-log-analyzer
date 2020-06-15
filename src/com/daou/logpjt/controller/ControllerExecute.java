@@ -17,7 +17,7 @@ public class ControllerExecute implements Runnable {
 		this.filePath = filePath;
 	}
 	
-	public void run() { 
+	public void run() {
 		controller.setFilePath(filePath);
 		controller.run();
 	}
