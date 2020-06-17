@@ -2,7 +2,6 @@ package com.daou.logpjt;
 
 import java.util.Scanner;
 
-import com.daou.logpjt.controller.AbstractController;
 import com.daou.logpjt.controller.BrowserFromReqController;
 import com.daou.logpjt.controller.ControllerExecute;
 import com.daou.logpjt.controller.ControllerThreadPool;
@@ -33,7 +32,7 @@ public class ClientExecute {
 		ControllerExecute controllerExecute = null;
 		ControllerThreadPool threadPool = new ControllerThreadPool();
 		
-		while(flag) {
+//		while(flag) {
     		HomeView.getInstance().render();
 				num = sc.nextInt();
 				Sel s = Sel.getByValue(num);
@@ -70,10 +69,10 @@ public class ClientExecute {
 	    				break;
     			}
     			
-        	if(!flag) {System.out.println("시스템을 종료합니다."); continue;}
+//        	if(!flag) {System.out.println("시스템을 종료합니다."); continue;}
         	
     		threadPool.assignThreadtoController(controllerExecute);
-		}
+//		}
 		
 		sc.close();
 	}
