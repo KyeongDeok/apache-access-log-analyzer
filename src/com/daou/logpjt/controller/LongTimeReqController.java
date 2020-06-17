@@ -10,7 +10,7 @@ import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
 
-
+//TODO:: 리플레션 없애고 각 쓰레드별로 파일을 저장해야함.
 public class LongTimeReqController extends AbstractController {
 	private static HashSet<String> reqApiHs = new HashSet<>();
 
@@ -61,5 +61,5 @@ public class LongTimeReqController extends AbstractController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+	}		
 }

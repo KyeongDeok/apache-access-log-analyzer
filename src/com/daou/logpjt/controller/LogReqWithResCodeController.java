@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.daou.logpjt.model.LogDataModel;
 import com.daou.logpjt.model.LogDataModelAndView;
 import com.daou.logpjt.util.LogTimeUtil;
 import com.daou.logpjt.util.RegularExp;
@@ -21,11 +22,11 @@ public class LogReqWithResCodeController extends AbstractController {
 
 	public void process(String log) {
 		String reqApi, resCode, reqMethod;
-		String method = (String) model.getAttribute("method");
-		String code = (String) model.getAttribute("code");
+		String method = (String) LogDataModel.getAttribute("method");
+		String code = (String) LogDataModel.getAttribute("code");
 		
-		long startTime = (long) model.getAttribute("startTime");
-		long endTime = (long) model.getAttribute("endTime");
+		long startTime = (long) LogDataModel.getAttribute("startTime");
+		long endTime = (long) LogDataModel.getAttribute("endTime");
 		long epoch = LogTimeUtil.getEpoch(parse.doParse(RegularExp.LOGTIME, log));
 		
 		reqApi = parse.doParse(RegularExp.REQAPI, log);
